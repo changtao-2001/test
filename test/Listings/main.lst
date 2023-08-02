@@ -1,0 +1,61 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              05/03/2023 21:44:22 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          sbit IN1=P0^1;
+   3          sbit IN2=P0^2; //定义小车驱动模块输入IO口 
+   4          sbit ENA=P0^0; //定义小车驱动模块使能端 
+   5          sbit X1=P1^0;//定义循迹
+   6          sbit LED=P3^4;//定义LED小灯
+   7          void dianji1()   //正转 IN1 1   IN2 0
+   8          {
+   9   1          IN1=1;
+  10   1          IN2=0;
+  11   1      }
+  12          
+  13          void dianji2()   //反转 IN1 1   IN2 1
+  14          {
+  15   1          IN1=0;
+  16   1          IN2=1;
+  17   1      }
+  18          
+  19          
+  20          void main()
+  21          {
+  22   1        while(1)
+  23   1        { 
+  24   2          
+  25   2          if(X1==0)  //黑线 低电平
+  26   2          {
+  27   3            LED=1;
+  28   3            dianji1();
+  29   3          }
+  30   2          else if(X1==1)
+  31   2          {
+  32   3            LED=0;
+  33   3            dianji2();
+  34   3          }
+  35   2      
+  36   2        }
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     30    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
